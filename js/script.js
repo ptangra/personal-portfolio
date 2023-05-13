@@ -57,3 +57,33 @@ const typed = new Typed('.multiple-text', {
     bakcDelat: 1000,
     loop: true
 });
+
+/*===================== smtp js email handling =====================*/
+const formName = document.getElementById('formName');
+const formEmail = document.getElementById('formName');
+const formNumber = document.getElementById('formName');
+const formEmailSubject = document.getElementById('formEmailSubject');
+const formMessage = document.getElementById('formMessage');
+const contForm  = document.getElementById('contactForm');
+
+contForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let emailBody = `
+    <b>Full Name: </b>${formName.value}
+    <br>
+    <b>Email: </b>${formEmail.value}
+    <br>
+    <b>Mobile Number: </b>${formNumber.value}
+    <br>
+    <b>Message: </b>${formMessage.value}
+    `
+    Email.send({
+        SecureToken : "94231384-2093-4f83-8d13-c16b412ed167",
+        To : 'petar9701@gmail.com',
+        From : "petar9701@gmail.com",
+        Subject : formEmailSubject.value,
+        Body : emailBody
+    }).then(
+      message => alert(message)
+    );
+});
