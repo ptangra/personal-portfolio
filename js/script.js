@@ -60,8 +60,8 @@ const typed = new Typed('.multiple-text', {
 
 /*===================== smtp js email handling =====================*/
 const formName = document.getElementById('formName');
-const formEmail = document.getElementById('formName');
-const formNumber = document.getElementById('formName');
+const formEmail = document.getElementById('formEmail');
+const formNumber = document.getElementById('formNumber');
 const formEmailSubject = document.getElementById('formEmailSubject');
 const formMessage = document.getElementById('formMessage');
 const contForm  = document.getElementById('contactForm');
