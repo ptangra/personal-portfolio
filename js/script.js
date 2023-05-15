@@ -88,5 +88,67 @@ contForm.addEventListener('submit', (e) => {
     );
 });
 
+/*===================== read more handling =====================*/
 
-// https://drive.google.com/uc?export=download&id=FILEID
+// Get the modal
+var modal = document.getElementById("readMoreModal");
+
+var modalHeader = document.getElementById("modalHeader");
+var modalBody = document.getElementById("modalBody");
+var modalFooter = document.getElementById("modalFooter");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("closeBtn")[0];
+
+// When the user clicks on the button, open the modal
+// aboutReadMorebtn.onclick = function() {
+//     modalHeader.textContent = 'Test';
+//     modalBody.textContent = aboutReadMorebtn.value;
+//     console.log(aboutReadMorebtn.value);
+//     modalFooter.textContent = 'footer test';
+//     modal.style.display = "block";
+// };
+
+var readmore =
+[
+    {
+        "value": "about",
+        "text": "This is the about text."
+    },
+    {
+        "value": "services_1",
+        "text": "This is the services_1 text."
+    }
+    ,
+    {
+        "value": "services_2",
+        "text": "This is the services_2 text."
+    }
+    ,
+    {
+        "value": "services_3",
+        "text": "This is the services_3 text."
+    }
+];
+
+function onReadMoreClicked(value){
+    modalHeader.textContent = 'Test';
+    modalBody.textContent = value;
+    modalFooter.textContent = 'footer test';
+    console.log(readmore);
+    modal.style.display = "block";
+}
+
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+}; 
