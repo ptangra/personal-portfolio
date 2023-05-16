@@ -137,9 +137,19 @@ function onReadMoreClicked(value){
     modalFooter.textContent = 'footer test';
     console.log(readmore);
     modal.style.display = "block";
+
+    // fetch('http://localhost:3000/data')
+    //     .then(response => response.json())
+    //     .then(data => onReadMoreDataFetched(value, data));
 }
 
-
+// function onReadMoreDataFetched(value, data){
+//     const element = data.find(x => x.value === value);
+//     modalHeader.textContent = 'Test';
+//     modalBody.textContent = element.text;
+//     modalFooter.textContent = 'footer test';
+//     modal.style.display = "block";
+// };
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
