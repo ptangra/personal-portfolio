@@ -1,3 +1,67 @@
+/*===================== api fetch handling =====================*/
+const apiUrl = 'https://localhost:7256/api/';
+var apiData;
+
+function FetchInitData(){
+    fetch(apiUrl + 'contents/getcontentsbyprojectid/1')
+        .then(response => response.json())
+        .then(data => onDataFetched(data))
+        .catch(err => onAlert("Unexpected error. Try again."));
+};
+
+function onDataFetched(data){
+    apiData = data;
+    apiData.map(x => console.log(x));
+    setMainContent(apiData);
+    hideLoading();
+};
+
+displayLoading();
+FetchInitData();
+
+function setMainContent(data){
+    setSectionSummaryContent(data.find(x => x.name === "home"), "homeMainText");
+    setSectionSummaryContent(data.find(x => x.name === "about"), "aboutMainText");
+};
+
+function setSectionSummaryContent(data, element){
+    var textContent = document.getElementById(element);
+    textContent.textContent = data.summary;
+};
+
+/*===================== read more handling =====================*/
+
+// Get the modal
+var modal = document.getElementById("readMoreModal");
+var modalHeader = document.getElementById("modalHeader");
+var modalBody = document.getElementById("modalBody");
+var modalFooter = document.getElementById("modalFooter");
+
+// Get the <span> element that closes the modal
+// var span = document.getElementsByClassName("closeBtn")[0];
+var readMoreCloseBtn = document.getElementById("readMoreCloseBtn");
+function onReadMoreClicked(name){
+    // fetch('https://localhost:7256/api/contents/getcontents')
+    // fetch(apiUrl + 'contents/getcontents/1')
+    //     .then(response => response.json())
+    //     .then(data => onReadMoreDataFetched(value, data))
+    //     .catch(err => onAlert("Unexpected error. Try again."));
+    const element = apiData.find(x => x.name === name);
+    modalHeader.textContent = element.name;
+    modalBody.textContent = element.text;
+    modalFooter.textContent = element.name;
+    modal.style.display = "block";
+}
+
+function onReadMoreDataFetched(value, data){
+    const element = data.find(x => x.value === value);
+    modalHeader.textContent = 'Test';
+    modalBody.textContent = element.text;
+    modalFooter.textContent = 'footer test';
+    modal.style.display = "block";
+};
+
+
 /*===================== toggle icon navbar =====================*/
 let menuIcon = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
@@ -88,77 +152,48 @@ contForm.addEventListener('submit', (e) => {
     );
 });
 
-/*===================== read more handling =====================*/
-
-// Get the modal
-var modal = document.getElementById("readMoreModal");
-
-var modalHeader = document.getElementById("modalHeader");
-var modalBody = document.getElementById("modalBody");
-var modalFooter = document.getElementById("modalFooter");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("closeBtn")[0];
-
-// When the user clicks on the button, open the modal
-// aboutReadMorebtn.onclick = function() {
-//     modalHeader.textContent = 'Test';
-//     modalBody.textContent = aboutReadMorebtn.value;
-//     console.log(aboutReadMorebtn.value);
-//     modalFooter.textContent = 'footer test';
-//     modal.style.display = "block";
-// };
-
-var readmore =
-[
-    {
-        "value": "about",
-        "text": "This is the about text."
-    },
-    {
-        "value": "services_1",
-        "text": "This is the services_1 text."
-    }
-    ,
-    {
-        "value": "services_2",
-        "text": "This is the services_2 text."
-    }
-    ,
-    {
-        "value": "services_3",
-        "text": "This is the services_3 text."
-    }
-];
-
-function onReadMoreClicked(value){
-    modalHeader.textContent = 'Test';
-    modalBody.textContent = value;
-    modalFooter.textContent = 'footer test';
-    console.log(readmore);
-    modal.style.display = "block";
-
-    // fetch('http://localhost:3000/data')
-    //     .then(response => response.json())
-    //     .then(data => onReadMoreDataFetched(value, data));
+/*===================== loading handling =====================*/
+function hideLoading() {
+    const loaderContainer = document.querySelector('.loader-wrapper');
+    loaderContainer.style.display = 'none';
 }
 
-// function onReadMoreDataFetched(value, data){
-//     const element = data.find(x => x.value === value);
-//     modalHeader.textContent = 'Test';
-//     modalBody.textContent = element.text;
-//     modalFooter.textContent = 'footer test';
-//     modal.style.display = "block";
-// };
+function displayLoading() {
+    const loaderContainer = document.querySelector('.loader-wrapper');
+    loaderContainer.style.display = 'flex';
+}
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+/*===================== alert handling =====================*/
+// Get the alert component
+var infoAlert = document.getElementById("infoAlert");
+
+var infoAlertHeader = document.getElementById("infoAlertHeader");
+var infoAlertBody = document.getElementById("infoAlertBody");
+var infoAlertFooter = document.getElementById("infoAlertFooter");
+var infoAlertCloseBtn = document.getElementById("infoAlertCloseBtn");
+function onAlert(text){
+    // infoAlertHeader.textContent = 'Test';
+    infoAlertBody.textContent = text;
+    // infoAlertFooter.textContent = 'footer test';
+    infoAlert.style.display = "block";
+};
+
+/*===================== close modals handling =====================*/
+// When the user clicks on readMoreModal (x), close the modal
+readMoreCloseBtn.onclick = function() {
     modal.style.display = "none";
+};
+// When the user clicks on infoAlert (x), close the modal
+infoAlertCloseBtn.onclick = function() {
+    infoAlert.style.display = "none";
 };
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
-      modal.style.display = "none";
+        modal.style.display = "none";
+    }
+    if(event.target == infoAlert){
+        infoAlert.style.display = "none";
     }
 }; 
