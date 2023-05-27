@@ -28,7 +28,9 @@
                 <a href="#contact">Contact</a>
             </nav>
         </header>
-
+        <div class="loader-wrapper">
+            <span class="loader"><span class="loader-inner"></span></span>
+        </div>
 
         <!-- home section design -->
         <section class="home" id="home">
@@ -36,14 +38,17 @@
                 <h3>Hello, It's Me</h3>
                 <h1>Petar Georgiev</h1>
                 <h3>And I'm a <span class="multiple-text"></span></h3>
-                <p>If you're looking for a skilled .NET Developer with a strong track record of success in the semiconductor automation industry, as well as a passion for web development and API development, please don't hesitate to reach out to me.</p>
+                <!-- <p id="homeMainText">If you're looking for a skilled .NET Developer with a strong track record of success in the semiconductor automation industry, as well as a passion for web development and API development, please don't hesitate to reach out to me.</p> -->
+                <p id="homeMainText"></p>
                 <div class="social-media">
-                    <a href="#"><i class="bx bxl-facebook"></i></a>
-                    <a href="#"><i class="bx bxl-twitter"></i></a>
-                    <a href="#"><i class="bx bxl-instagram-alt"></i></a>
-                    <a href="#"><i class="bx bxl-linkedin"></i></a>
+                    <a href="https://twitter.com/pgeorgiev4" target="_blank"><i class="bx bxl-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/petar-georgiev-867b661ab/" target="_blank"><i class="bx bxl-linkedin"></i></a>
+                    <a href="https://t.me/pgeorgiev" target="_blank"><i class='bx bxl-telegram'></i></a>
+                    <a href="https://github.com/ptangra" target="_blank"><i class='bx bxl-github'></i></a>
                 </div>
-                <a href="#" class="btn">Download CV</a>
+
+                <!-- link to google.drive direct download link ex. https://drive.google.com/uc?export=download&id=FILEID, FILEID beind the unique file id -->
+                <a href="https://drive.google.com/uc?export=download&id=1dYQtStKM8UHyXu0O95N8qfkxshYmQbtT" class="btn">Download CV</a>
             </div>
 
             <div class="home-img">
@@ -60,9 +65,10 @@
 
             <div class="about-content">
                 <h2 class="heading">About <span>Me</span></h2>
-                <h3>NET Developer!</h3>
-                <p>If you're looking for a skilled .NET Developer with a strong track record of success in the semiconductor automation industry, as well as a passion for web development and API development, please don't hesitate to reach out to me.</p>
-                <a href="#" class="btn">Ream More</a>
+                <h3>.NET Developer!</h3>
+                <!-- <p id="aboutMainText">If you're looking for a skilled .NET Developer with a strong track record of success in the semiconductor automation industry, as well as a passion for web development and API development, please don't hesitate to reach out to me.</p> -->
+                <p id="aboutMainText"></p>
+                <button onclick="onReadMoreClicked(this.value)" value="about" class="btn">Read More</button>
             </div>
         </section>
 
@@ -75,21 +81,21 @@
                       <i class="bx bx-paint"></i>  
                       <h3>Desktop Dev</h3>
                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec vulputate magna. Vestibulum ac gravida leo, interdum malesuada orci. Curabitur bibendum sapien a urna vehicula dignissim. Praesent bibendum enim sed elit dignissim, eget fringilla leo scelerisque. Sed maximus dapibus vulputate. Vivamus nec ex iaculis, venenatis eros non, molestie justo. Vivamus vel malesuada erat, et ultricies turpis. Mauris sollicitudin lacus vel tortor venenatis, quis efficitur orci sodales. Nulla facilisi. Aliquam semper dignissim libero, eget laoreet dui euismod eu. </p>
-                      <a href="#" class="btn">Ream More</a>
+                      <button onclick="onReadMoreClicked(this.value)" value="services_1" class="btn">Read More</button>
                 </div>
 
                 <div class="services-box">
                     <i class="bx bx-code-alt"></i>  
                     <h3>Web Development</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec vulputate magna. Vestibulum ac gravida leo, interdum malesuada orci. Curabitur bibendum sapien a urna vehicula dignissim. Praesent bibendum enim sed elit dignissim, eget fringilla leo scelerisque. Sed maximus dapibus vulputate. Vivamus nec ex iaculis, venenatis eros non, molestie justo. Vivamus vel malesuada erat, et ultricies turpis. Mauris sollicitudin lacus vel tortor venenatis, quis efficitur orci sodales. Nulla facilisi. Aliquam semper dignissim libero, eget laoreet dui euismod eu. </p>
-                    <a href="#" class="btn">Ream More</a>
+                    <button onclick="onReadMoreClicked(this.value)" value="services_2" class="btn">Read More</button>
                 </div>
 
                 <div class="services-box">
                     <i class="bx bx-code-alt"></i>  
                     <h3>AI</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec vulputate magna. Vestibulum ac gravida leo, interdum malesuada orci. Curabitur bibendum sapien a urna vehicula dignissim. Praesent bibendum enim sed elit dignissim, eget fringilla leo scelerisque. Sed maximus dapibus vulputate. Vivamus nec ex iaculis, venenatis eros non, molestie justo. Vivamus vel malesuada erat, et ultricies turpis. Mauris sollicitudin lacus vel tortor venenatis, quis efficitur orci sodales. Nulla facilisi. Aliquam semper dignissim libero, eget laoreet dui euismod eu. </p>
-                    <a href="#" class="btn">Ream More</a>
+                    <button onclick="onReadMoreClicked(this.value)" value="services_3" class="btn">Read More</button>
                 </div>
            </div>
 
@@ -105,7 +111,7 @@
                     <div class="portfolio-layer">
                         <h4>Web Design</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec vulputate magna. Vestibulum ac gravida leo, interdum malesuada orci. Curabitur bibendum sapien a urna vehicula dignissim.  </p>
-                        <a href="#"><i class="bx bx-link-external"></i></a>
+                        <button onclick="onReadMoreClicked(this.value)" value="portfolio_1"><i class="bx bx-link-external"></i></button>
                     </div>
                 </div>
 
@@ -114,7 +120,7 @@
                     <div class="portfolio-layer">
                         <h4>Web Design</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec vulputate magna. Vestibulum ac gravida leo, interdum malesuada orci. Curabitur bibendum sapien a urna vehicula dignissim.  </p>
-                        <a href="#"><i class="bx bx-link-external"></i></a>
+                        <button onclick="onReadMoreClicked(this.value)" value="portfolio_2"><i class="bx bx-link-external"></i></button>
                     </div>
                 </div>
 
@@ -123,7 +129,7 @@
                     <div class="portfolio-layer">
                         <h4>Web Design</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec vulputate magna. Vestibulum ac gravida leo, interdum malesuada orci. Curabitur bibendum sapien a urna vehicula dignissim.  </p>
-                        <a href="#"><i class="bx bx-link-external"></i></a>
+                        <button onclick="onReadMoreClicked(this.value)" value="portfolio_3"><i class="bx bx-link-external"></i></button>
                     </div>
                 </div>
 
@@ -132,7 +138,7 @@
                     <div class="portfolio-layer">
                         <h4>Web Design</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec vulputate magna. Vestibulum ac gravida leo, interdum malesuada orci. Curabitur bibendum sapien a urna vehicula dignissim.  </p>
-                        <a href="#"><i class="bx bx-link-external"></i></a>
+                        <button onclick="onReadMoreClicked(this.value)" value="portfolio_4"><i class="bx bx-link-external"></i></button>
                     </div>
                 </div>
 
@@ -141,7 +147,7 @@
                     <div class="portfolio-layer">
                         <h4>Web Design</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec vulputate magna. Vestibulum ac gravida leo, interdum malesuada orci. Curabitur bibendum sapien a urna vehicula dignissim.  </p>
-                        <a href="#"><i class="bx bx-link-external"></i></a>
+                        <button onclick="onReadMoreClicked(this.value)" value="portfolio_5"><i class="bx bx-link-external"></i></button>
                     </div>
                 </div>
 
@@ -150,7 +156,7 @@
                     <div class="portfolio-layer">
                         <h4>Web Design</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec vulputate magna. Vestibulum ac gravida leo, interdum malesuada orci. Curabitur bibendum sapien a urna vehicula dignissim.  </p>
-                        <a href="#"><i class="bx bx-link-external"></i></a>
+                        <button onclick="onReadMoreClicked(this.value)" value="portfolio_6"><i class="bx bx-link-external"></i></button>
                     </div>
                 </div>
 
@@ -174,6 +180,40 @@
                 <input id="formSubmit" type="submit" value="Send Message" class="btn">
             </form>
          </section>
+
+        <!-- Read more modal -->
+        <div id="readMoreModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span id="readMoreCloseBtn" class="closeBtn">&times;</span>
+                    <h2 id="modalHeader">Modal Header</h2>
+                  </div>
+                  <div class="modal-body">
+                    <p id="modalBody">Modal Body</p>
+                  </div>
+                  <div class="modal-footer">
+                    <h3 id="modalFooter">Modal Footer</h3>
+                  </div>
+            </div>
+        </div>
+
+        <!-- Info Alert -->
+        <div id="infoAlert" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span id="infoAlertCloseBtn" class="closeBtn">&times;</span>
+                    <h2 id="infoAlertHeader"></h2>
+                  </div>
+                  <div class="modal-body">
+                    <p id="infoAlertBody">Error!</p>
+                  </div>
+                  <div class="modal-footer">
+                    <h3 id="infoAlertFooter"></h3>
+                  </div>
+            </div>
+        </div>
 
          <!-- footer design -->
          <footer class="footer">
