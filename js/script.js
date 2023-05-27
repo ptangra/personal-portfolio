@@ -1,5 +1,5 @@
 /*===================== api fetch handling =====================*/
-const apiUrl = 'https://localhost:7256/api/';
+const apiUrl = 'https://razor-cms.up.railway.app/api/';
 var apiData;
 
 function FetchInitData(){
