@@ -1,9 +1,10 @@
 /*===================== api fetch handling =====================*/
 const apiUrl = 'https://razor-cms.up.railway.app/api/';
+const projectId = '1';
 var apiData;
 
 function FetchInitData(){
-    fetch(apiUrl + 'contents/getcontentsbyprojectid/1')
+    fetch(apiUrl + 'contents/getcontentsbyprojectid/' + projectId)
         .then(response => response.json())
         .then(data => onDataFetched(data))
         .catch(err => onAlert("Unexpected error. Try again."));
@@ -11,13 +12,9 @@ function FetchInitData(){
 
 function onDataFetched(data){
     apiData = data;
-    apiData.map(x => console.log(x));
     setMainContent(apiData);
     hideLoading();
 };
-
-displayLoading();
-FetchInitData();
 
 function setMainContent(data){
     setSectionSummaryContent(data.find(x => x.name === "home"), "homeMainText");
@@ -28,6 +25,32 @@ function setSectionSummaryContent(data, element){
     var textContent = document.getElementById(element);
     textContent.textContent = data.summary;
 };
+
+function FetchVisitorData(){
+    fetch("https://ipapi.co/json/")
+    .then(response=>response.json())
+    .then((responseJson=>{
+        sendVisitorData(responseJson);
+    }));
+};
+
+function sendVisitorData(data){
+    data.ProjectId = projectId;
+    fetch(apiUrl + 'contents/postvisitor', {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+    .then((response) => response.json())
+    .catch((err) => console.log('error: ' + err));
+};
+
+
+displayLoading();
+FetchInitData();
+FetchVisitorData();
 
 /*===================== read more handling =====================*/
 
@@ -41,25 +64,12 @@ var modalFooter = document.getElementById("modalFooter");
 // var span = document.getElementsByClassName("closeBtn")[0];
 var readMoreCloseBtn = document.getElementById("readMoreCloseBtn");
 function onReadMoreClicked(name){
-    // fetch('https://localhost:7256/api/contents/getcontents')
-    // fetch(apiUrl + 'contents/getcontents/1')
-    //     .then(response => response.json())
-    //     .then(data => onReadMoreDataFetched(value, data))
-    //     .catch(err => onAlert("Unexpected error. Try again."));
     const element = apiData.find(x => x.name === name);
     modalHeader.textContent = element.name;
     modalBody.textContent = element.text;
     modalFooter.textContent = element.name;
     modal.style.display = "block";
 }
-
-function onReadMoreDataFetched(value, data){
-    const element = data.find(x => x.value === value);
-    modalHeader.textContent = 'Test';
-    modalBody.textContent = element.text;
-    modalFooter.textContent = 'footer test';
-    modal.style.display = "block";
-};
 
 
 /*===================== toggle icon navbar =====================*/
