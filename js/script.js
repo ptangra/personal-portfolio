@@ -65,9 +65,9 @@ var modalFooter = document.getElementById("modalFooter");
 var readMoreCloseBtn = document.getElementById("readMoreCloseBtn");
 function onReadMoreClicked(name){
     const element = apiData.find(x => x.name === name);
-    modalHeader.textContent = element.name;
-    modalBody.textContent = element.text;
-    modalFooter.textContent = element.name;
+    modalHeader.innerHTML = element.other;
+    modalBody.innerHTML = element.text;
+    modalFooter.innerHTML = "Copyright &copy; 2023 by Petar Georgiev | All Rights Reserved.";
     modal.style.display = "block";
 }
 
