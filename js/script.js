@@ -152,7 +152,7 @@ contForm.addEventListener('submit', (e) => {
     <b>Message: </b>${formMessage.value}
     `
     Email.send({
-        SecureToken : "94231384-2093-4f83-8d13-c16b412ed167",
+        SecureToken : "b4519bc5-3e5b-422c-9332-b82f0594e92b",
         To : 'pgdev@yahoo.com',
         From : "pgdev@yahoo.com",
         Subject : formEmailSubject.value,
