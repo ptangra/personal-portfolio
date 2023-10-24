@@ -48,9 +48,9 @@ function sendVisitorData(data){
 };
 
 
-displayLoading();
-FetchInitData();
-FetchVisitorData();
+// displayLoading();
+// FetchInitData();
+// FetchVisitorData();
 
 /*===================== read more handling =====================*/
 
